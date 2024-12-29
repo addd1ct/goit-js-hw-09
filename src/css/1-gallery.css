@@ -1,0 +1,26 @@
+@import 'simplelightbox/dist/simple-lightbox.min.css';
+
+a {
+  text-decoration: none;
+}
+
+img {
+  display: block;
+}
+
+.gallery {
+  max-width: 1440px;
+  list-style-type: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  margin: 0;
+  padding: 156px 24px;
+  align-items: center;
+  justify-content: center;
+}
+
+.gallery-image {
+  width: 360px;
+  height: 100%;
+}
