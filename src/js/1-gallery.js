@@ -82,6 +82,8 @@ const imagesGalleryCard = images.map(el => createGalLeryIteam(el)).join('');
 const gallery = document.querySelector('.gallery');
 gallery.innerHTML = imagesGalleryCard;
 
+console.log(imagesGalleryCard);
+
 import SimpleLightbox from 'simplelightbox';
 
 new SimpleLightbox('.gallery a', {
