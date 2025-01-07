@@ -80,13 +80,14 @@ const createGalLeryIteam = image => {
 const imagesGalleryCard = images.map(el => createGalLeryIteam(el)).join('');
 
 const gallery = document.querySelector('.gallery');
-gallery.innerHTML = imagesGalleryCard;
 
 if (typeof imagesGalleryCard === 'undefined') {
     console.error('imagesGalleryCard не определена!');
 }
 
 console.log(imagesGalleryCard);
+
+gallery.innerHTML = imagesGalleryCard;
 
 import SimpleLightbox from 'simplelightbox';
 
