@@ -1,5 +1,5 @@
 let formData = {};
-const feedbackFormEl = document.querySelector('.feedback-for');
+const feedbackFormEl = document.querySelector('.feedback-form');
 
 const fillFormFields = () => {
     try {
