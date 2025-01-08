@@ -1,52 +1,47 @@
-const feedbackFormEl = document.querySelector('.feedback-form');
-let formData = {
-  email: '',
-  message: '',
+const fillFormFields = () => {
+    try {
+        const formDataFormLS = JSON.parse(localStorage.getItem('feedback-form-data'));
+
+        if (formDataFormLS === null) {
+            return;
+        }
+
+        formData = formDataFormLS;
+
+        for (const key in formDataFormLS) {
+            feedbackFormEl.elements[key].value = formDataFormLS[key];
+        }
+    } catch (err) {
+        console.log(err);
+    }
 };
 
-const fillFormFilds = () => {
-  // перенесення з локального схов в інпути після перезавантаження
-  try {
-    const formDataFormLS = JSON.parse(
-      localStorage.getItem('feedback-form-data')
-    );
+fillFormFields();
 
-    if (formDataFormLS === null) {
-      return;
-    }
-    formData = formDataFormLS;
-    console.log(formData);
-    for (const key in formDataFormLS) {
-      feedbackFormEl.elements[key].value = formDataFormLS[key];
-    }
-  } catch (err) {
-    console.log(err);
-  }
-};
+const onFormInput = event => {
+    const { target: formFieldEl } = event;
 
-fillFormFilds();
+    const fieldValue = formFieldEl.value;
+    const fieldName = formFieldEl.name;
 
-const onFormChange = event => {
-  // деструктиризація івенту
-  const { target: formFildEl } = event;
+    formData[fieldName] = fieldValue;
 
-  //   запис того що написано в інпуті
-  const fildValue = formFildEl.value;
-  const fieldName = formFildEl.name;
-
-  //   звернення за ключем/
-  formData[fieldName] = fildValue;
-
-  //   збереження в локальному сховищі
-  localStorage.setItem('feedback-form-data', JSON.stringify(formData));
+    localStorage.setItem('feedback-form-data', JSON.stringify(formData));
 };
 
 const onFeedbackFormSubmit = event => {
-  event.preventDefault();
-  event.currentTarget.reset();
-  localStorage.removeItem('feedback-form-data');
+    event.preventDefault();
+
+    console.log(formData);
+
+    event.currentTarget.reset();
+
+    localStorage.removeItem('feedback-form-data');
+    formData = {
+        email: '',
+        message: '',
+    };
 };
 
-// подія втрати фокусу при змінні данних
-feedbackFormEl.addEventListener('change', onFormChange);
+feedbackFormEl.addEventListener('input', onFormInput);
 feedbackFormEl.addEventListener('submit', onFeedbackFormSubmit);
