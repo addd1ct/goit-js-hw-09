@@ -1,3 +1,5 @@
+const feedbackFormEl = document.querySelector('.feedback-form');
+
 const fillFormFields = () => {
     try {
         const formDataFormLS = JSON.parse(localStorage.getItem('feedback-form-data'));
