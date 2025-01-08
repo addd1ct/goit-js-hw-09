@@ -6,8 +6,6 @@ const fillFormFields = () => {
             return;
         }
 
-        const formData = formDataFormLS;
-
         for (const key in formDataFormLS) {
             feedbackFormEl.elements[key].value = formDataFormLS[key];
         }
@@ -15,6 +13,8 @@ const fillFormFields = () => {
         console.log(err);
     }
 };
+
+const formData = formDataFormLS;
 
 fillFormFields();
 
