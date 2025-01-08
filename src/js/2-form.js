@@ -8,7 +8,7 @@ const fillFormFields = () => {
             return;
         }
 
-        formData = formDataFormLS;
+        const formData = formDataFormLS;
 
         for (const key in formDataFormLS) {
             feedbackFormEl.elements[key].value = formDataFormLS[key];
