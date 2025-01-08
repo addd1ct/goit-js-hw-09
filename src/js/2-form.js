@@ -1,5 +1,5 @@
 let formData = {};
-const feedbackFormEl = document.querySelector('#feedback-form');
+const feedbackFormEl = document.querySelector('feedback-form');
 
 const fillFormFields = () => {
     try {
@@ -46,5 +46,9 @@ const onFeedbackFormSubmit = event => {
     };
 };
 
-feedbackFormEl.addEventListener('input', onFormInput);
-feedbackFormEl.addEventListener('submit', onFeedbackFormSubmit);
+if (feedbackFormEl) {
+    feedbackFormEl.addEventListener('input', onFormInput);
+    feedbackFormEl.addEventListener('submit', onFeedbackFormSubmit);
+} else {
+    console.error('Форма не найдена!');
+}
