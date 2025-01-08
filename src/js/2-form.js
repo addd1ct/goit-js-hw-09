@@ -1,8 +1,10 @@
 let formDataFormLS;
 const formData = formDataFormLS;
-let feedbackFormEl;
 
 const fillFormFields = () => {
+
+  let feedbackFormEl;
+
     try {
         const formDataFormLS = JSON.parse(localStorage.getItem('feedback-form-data'));
 
