@@ -1,4 +1,6 @@
 let formDataFormLS;
+const formData = formDataFormLS;
+let feedbackFormEl;
 
 const fillFormFields = () => {
     try {
@@ -15,8 +17,6 @@ const fillFormFields = () => {
         console.log(err);
     }
 };
-
-const formData = formDataFormLS;
 
 fillFormFields();
 
