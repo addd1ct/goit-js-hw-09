@@ -3,20 +3,20 @@ const feedbackFormEl = document.querySelector('.feedback-form');
 const fillFormFields = () => {
     try {
         const formDataFormLS = JSON.parse(localStorage.getItem('feedback-form-data'));
-
         if (formDataFormLS === null) {
             return;
         }
 
         const formData = formDataFormLS;
 
-        for (const key in formDataFormLS) {
-            feedbackFormEl.elements[key].value = formDataFormLS[key];
+        for (const key in formData) {
+            feedbackFormEl.elements[key].value = formData[key];
         }
     } catch (err) {
         console.log(err);
     }
 };
+
 
 fillFormFields();
 
