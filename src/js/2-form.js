@@ -17,7 +17,7 @@ const fillFormFields = () => {
             }
         }
     } catch (err) {
-        console.log('Помилка при зчитуванні даних з localStorage:', err);
+        console.log(err);
     }
 };
 
@@ -36,20 +36,21 @@ const onFormInput = event => {
 const onFeedbackFormSubmit = event => {
     event.preventDefault();
 
-    const email = formData.email?.trim();
-    const message = formData.message?.trim();
+    const email = feedbackFormEl.elements.email?.value.trim();
+    const message = feedbackFormEl.elements.message?.value.trim();
 
     if (!email || !message) {
         alert('Будь ласка, заповніть усі поля форми перед надсиланням.');
         return;
     }
 
-    console.log('Дані форми:', formData);
+    console.log(email, message);
 
     event.currentTarget.reset();
     localStorage.removeItem('feedback-form-data');
     formData = {};
 };
+
 
 if (feedbackFormEl) {
     feedbackFormEl.addEventListener('input', onFormInput);
