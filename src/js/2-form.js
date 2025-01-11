@@ -9,13 +9,15 @@ const fillFormFields = () => {
             return;
         }
 
+        formData = { ...storedFormData };
+
         for (const key in storedFormData) {
             if (feedbackFormEl.elements[key]) {
                 feedbackFormEl.elements[key].value = storedFormData[key];
             }
         }
     } catch (err) {
-        console.log(err);
+        console.log('Помилка при зчитуванні даних з localStorage:', err);
     }
 };
 
@@ -23,8 +25,7 @@ fillFormFields();
 
 const onFormInput = event => {
     const { target: formFieldEl } = event;
-
-    const fieldValue = formFieldEl.value;
+    const fieldValue = formFieldEl.value.trim();
     const fieldName = formFieldEl.name;
 
     formData[fieldName] = fieldValue;
@@ -35,20 +36,22 @@ const onFormInput = event => {
 const onFeedbackFormSubmit = event => {
     event.preventDefault();
 
-    console.log(formData);
+    const email = formData.email?.trim();
+    const message = formData.message?.trim();
+
+    if (!email || !message) {
+        alert('Будь ласка, заповніть усі поля форми перед надсиланням.');
+        return;
+    }
+
+    console.log('Дані форми:', formData);
 
     event.currentTarget.reset();
-
     localStorage.removeItem('feedback-form-data');
-    formData = {
-        email: '',
-        message: '',
-    };
+    formData = {};
 };
 
 if (feedbackFormEl) {
     feedbackFormEl.addEventListener('input', onFormInput);
     feedbackFormEl.addEventListener('submit', onFeedbackFormSubmit);
-} else {
-    console.error('Форма не найдена!');
 }
