@@ -51,7 +51,6 @@ const onFeedbackFormSubmit = event => {
     formData = {};
 };
 
-
 if (feedbackFormEl) {
     feedbackFormEl.addEventListener('input', onFormInput);
     feedbackFormEl.addEventListener('submit', onFeedbackFormSubmit);
